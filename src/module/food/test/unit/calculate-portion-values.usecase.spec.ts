@@ -6,10 +6,11 @@ describe("calculatePortionValues", () => {
     const portionValues = calculatePortionValuesUsecase(singleFoodStub)
 
     expect(portionValues).toEqual({
+      carbs: 1,
       calories: 26.32,
       fats: 2.27,
       proteins: 1.09,
-      amountInGrams: 4.55,
+      amountInGrams: 4.5,
     })
   })
 })

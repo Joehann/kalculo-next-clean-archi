@@ -2,6 +2,7 @@ import { Food } from "../domain/food.entity"
 
 const calculateKetoRatio = (food: Food) => {
   if (food.fatsPer100g === 100) return "∞"
+  if (food.fatsPer100g === 0) return "0"
 
   const ratio =
     Math.round(

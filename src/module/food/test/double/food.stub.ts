@@ -9,7 +9,7 @@ export const singleFoodStub = {
   carbsPer100g: 22,
 }
 
-export const oilStub = {
+export const onlyLipidsFoodStub = {
   name: "Olive oil",
   category: "other" as FoodCategory,
   caloriesPer100g: 900,
