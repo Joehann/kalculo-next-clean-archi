@@ -1,5 +1,5 @@
 import { Food } from "../../domain/food.entity"
-import { FoodRepository } from "../../domain/repository/food.repository"
+import { FoodRepository } from "../../domain/interface/food.repository.interface"
 
 export class InMemoryFoodRepository implements FoodRepository {
   private foodCollection: Food[] = []

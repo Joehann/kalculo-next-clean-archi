@@ -1,7 +1,7 @@
-import deterministicUuidProvider from "../../../../core/providers/di/uuidProvider/deterministicUuidProvider"
+import deterministicUuidProvider from "../../../../core/providers/uuidProvider/deterministicUuidProvider"
 import addCustomFoodUsecase from "../../src/application/add-custom-food.usecase"
 import { Food } from "../../src/domain/food.entity"
-import { FoodRepository } from "../../src/domain/repository/food.repository"
+import { FoodRepository } from "../../src/domain/interface/food.repository.interface"
 import { InMemoryFoodRepository } from "../../src/infrastructure/repository/food-in-memory.repository"
 import { singleFoodStub } from "../double/food.stub"
 
