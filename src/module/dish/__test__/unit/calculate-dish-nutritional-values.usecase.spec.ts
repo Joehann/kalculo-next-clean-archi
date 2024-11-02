@@ -15,7 +15,8 @@ describe("calculateDishNutritionalValuesUsecase", () => {
       totalCarbs: 22,
       totalFats: 57,
       totalProteins: 82.4,
-      totalRatio: 0.55,
+      totalQuantity: 300,
+      totalRatio: "0.55:1",
     })
   })
 })

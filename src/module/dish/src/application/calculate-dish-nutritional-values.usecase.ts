@@ -1,5 +1,6 @@
 import { FoodCollection } from "@/module/food/src/domain/food.collection"
 import { Dish } from "../domain/dish.entity"
+import calculateKetoRatio from "../../../../core/utils/calculation/ketoRatio"
 
 const calculateDishNutritionalValuesUsecase =
   (foodCollection: FoodCollection) =>
@@ -10,7 +11,8 @@ const calculateDishNutritionalValuesUsecase =
     totalCarbs: number
     totalFats: number
     totalProteins: number
-    totalRatio: number
+    totalRatio: string
+    totalQuantity: number
   } => {
     const foodUuidList = dish.foods.map((food) => food.foodUuid)
     const filteredFoods = foodCollection.filter(
@@ -30,16 +32,21 @@ const calculateDishNutritionalValuesUsecase =
     let totalCarbs = 0
     let totalFats = 0
     let totalProteins = 0
+    let totalQuantity = 0
 
     for (const food of foodsWithQuantity) {
       totalCalories += (food.caloriesPer100g * food.quantity) / 100
       totalCarbs += (food.carbsPer100g * food.quantity) / 100
       totalFats += (food.fatsPer100g * food.quantity) / 100
       totalProteins += (food.proteinsPer100g * food.quantity) / 100
+      totalQuantity += food.quantity
     }
 
-    const totalRatio =
-      Math.round(100 * (totalFats / (totalCarbs + totalProteins))) / 100
+    const totalRatio = calculateKetoRatio(totalQuantity)({
+      carbs: totalCarbs,
+      fats: totalFats,
+      proteins: totalProteins,
+    })
 
     return {
       totalCalories,
@@ -47,6 +54,7 @@ const calculateDishNutritionalValuesUsecase =
       totalFats,
       totalProteins,
       totalRatio,
+      totalQuantity,
     }
   }
 
