@@ -1,7 +1,7 @@
 import { Food } from "../../domain/food.entity"
-import { FoodRepository } from "../../domain/interface/food.repository.interface"
+import { IFoodRepository } from "../../domain/interface/food.repository.interface"
 
-export class InMemoryFoodRepository implements FoodRepository {
+export class InMemoryFoodRepository implements IFoodRepository {
   private foodCollection: Food[] = []
 
   public async save(food: Food): Promise<void> {

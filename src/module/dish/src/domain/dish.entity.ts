@@ -11,3 +11,7 @@ export type Dish = {
   }[]
   isRecipe?: boolean
 }
+
+export const haveDishAtLeastOneFood = (dish: Dish): boolean => {
+  return dish.foods.length > 0
+}

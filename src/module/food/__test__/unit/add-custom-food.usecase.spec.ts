@@ -1,13 +1,13 @@
 import deterministicUuidProvider from "../../../../core/providers/uuidProvider/deterministicUuidProvider"
 import addCustomFoodUsecase from "../../src/application/add-custom-food.usecase"
 import { Food } from "../../src/domain/food.entity"
-import { FoodRepository } from "../../src/domain/interface/food.repository.interface"
+import { IFoodRepository } from "../../src/domain/interface/food.repository.interface"
 import { InMemoryFoodRepository } from "../../src/infrastructure/repository/food-in-memory.repository"
 import { singleFoodStub } from "../double/food.stub"
 
 describe("addCustomFood Use Case", () => {
   let addFood: (food: Food) => void
-  let foodRepository: FoodRepository
+  let foodRepository: IFoodRepository
   let uuidProvider: () => string
 
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe("addCustomFood Use Case", () => {
   })
 
   it("should save a custom food item to the repository", async () => {
-    addFood(singleFoodStub)
+    await addFood(singleFoodStub)
 
     const foodCollection = await foodRepository.findAll()
 
