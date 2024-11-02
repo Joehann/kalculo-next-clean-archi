@@ -15,4 +15,8 @@ export class InMemoryDishRepository implements IDishRepository {
   public async findAll(): Promise<Dish[]> {
     return this.dishCollection
   }
+
+  public setCollection(collection: Dish[]): void {
+    this.dishCollection = collection
+  }
 }

@@ -17,3 +17,14 @@ export const singleDishWithoutFoodStub: Dish = {
   ...singleDishStub,
   foods: [],
 }
+
+export const dishWithTwoFoodsStub: Dish = {
+  ...singleDishStub,
+  foods: [
+    ...singleDishStub.foods,
+    {
+      foodUuid: "654321",
+      quantity: 200,
+    },
+  ],
+}
