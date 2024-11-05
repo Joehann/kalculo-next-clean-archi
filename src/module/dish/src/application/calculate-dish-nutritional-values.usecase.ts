@@ -19,9 +19,8 @@ const calculateDishNutritionalValuesUsecase =
       (food) => !food.uuid || foodUuidList.includes(food.uuid)
     )
 
-    const foodsWithQuantity = filteredFoods.map((food) => {
+    const foodsWithQuantities = filteredFoods.map((food) => {
       const foodItem = dish.foods.find((f) => f.foodUuid === food.uuid)
-
       return {
         ...food,
         quantity: foodItem?.quantity ?? 0,
@@ -34,7 +33,7 @@ const calculateDishNutritionalValuesUsecase =
     let totalProteins = 0
     let totalQuantity = 0
 
-    for (const food of foodsWithQuantity) {
+    for (const food of foodsWithQuantities) {
       totalCalories += (food.caloriesPer100g * food.quantity) / 100
       totalCarbs += (food.carbsPer100g * food.quantity) / 100
       totalFats += (food.fatsPer100g * food.quantity) / 100
